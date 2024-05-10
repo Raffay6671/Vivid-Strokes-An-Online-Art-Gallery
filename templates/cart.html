@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <!-- <link rel="stylesheet" href="WebProject\static\cart.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+
+</head>
+<body>
+    <div class="header">
+        <div class="title">Vivid Strokes Exhibit</div>
+        <button class="button-home" onclick="window.location.href='{{ url_for('home_page') }}'">Home Page</button>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('abstract_art') }}">Abstract Art</a>
+        <a href="{{ url_for('paintings') }}">Paintings</a>
+        <a href="{{ url_for('drawings') }}">Drawings</a>
+        <a href="{{ url_for('digital_art') }}">Digital Art</a>
+    </div>
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
+        <div id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div class="promo-code">
+            <input type="text" id="promoInput" placeholder="Enter Promo Code">
+            <button onclick="applyPromoCode()">Apply</button>
+        </div>
+        <p id="total" class="total">Subtotal: $0.00</p>
+        <button class="checkout-btn" onclick="window.location.href='{{ url_for('checkout') }}'">Proceed to Checkout</button>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItems = {{ cart_items | tojson }};
+            displayCart(cartItems);
+        });
+        
+        const promoCodes = {
+            "VSE341": 0.05,  // 5% discount
+            "VSE123": 0.05,  // 5% discount
+            "VSE897": 0.05,  // 5% discount
+            "VSE111": 0.05,  // 5% discount
+            "VSE222": 0.05,  // 5% discount
+            "VSE246": 0.05   // 5% discount
+        };
+        
+        function displayCart(cart) {
+            const cartItemsElement = document.getElementById('cartItems');
+            let subtotal = 0;
+        
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<p>Your cart is currently empty.</p>';
+            } else {
+                const itemsHtml = cart.map((item, index) => {
+                    subtotal += item.price;
+                    return `<div class="cart-item">
+                                <p class="item-details">${item.name} - $${item.price.toFixed(2)}</p>
+                                <button class="remove-btn" onclick="removeItem('${item.name}')">Remove</button>
+                            </div>`;
+                }).join('');
+                cartItemsElement.innerHTML = itemsHtml;
+                updateTotal(subtotal);
+            }
+        }
+        
+        function updateTotal(subtotal) {
+            const tax = subtotal * 0.05;
+            let shipping = subtotal > 500 ? 0 : 30;
+            let total = subtotal + tax + shipping;
+            document.getElementById('total').textContent = `Subtotal: $${subtotal.toFixed(2)}, Tax: $${tax.toFixed(2)}, Shipping: $${shipping.toFixed(2)}, Total: $${total.toFixed(2)}`;
+        }
+        
+        function removeItem(itemName) {
+            fetch('/remove-from-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({item_name: itemName})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    alert('Item removed successfully!');
+                    location.reload();  // Reload the page to update the cart display
+                } else {
+                    alert('Failed to remove item: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error removing item:', error));
+        }
+        
+        function applyPromoCode() {
+            const promoInput = document.getElementById('promoInput').value;
+            if (promoCodes[promoInput]) {
+                const subtotalElement = document.getElementById('total');
+                let subtotal = parseFloat(subtotalElement.textContent.split('$')[1]);
+                const discount = subtotal * promoCodes[promoInput];
+                subtotal -= discount;  // Apply the discount to the subtotal
+                updateTotal(subtotal);  // Update the total display
+                alert(`Promo code applied successfully! Discount: $${discount.toFixed(2)}`);
+            } else {
+                alert('Invalid promo code.');
+            }
+        }
+        </script>
+        
+       
+      
+</body>
+</html>

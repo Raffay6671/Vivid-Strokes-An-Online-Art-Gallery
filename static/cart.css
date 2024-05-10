@@ -1,0 +1,98 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: whitesmoke;
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    text-align: center;
+    box-shadow: 0 0 10px whitesmoke;
+}
+.header {
+    background-color: #333;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navigation {
+    background-color: #c00;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+.navigation a:hover {
+    text-decoration: underline;
+}
+.cart-item {
+    background-color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item-details {
+    font-size: 18px;
+    font-weight: bold;
+}
+.item-price {
+    font-size: 16px;
+}
+.remove-btn {
+    padding: 5px 10px;
+    background-color: #c00;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.checkout-btn {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #006fcd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.promo-code {
+    margin: 20px 0;
+}
+.promo-code input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+.promo-code button {
+    padding: 10px 20px;
+    background-color: #006fcd;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.button-home {
+    background-color: #006fcd;
+}

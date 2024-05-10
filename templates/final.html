@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='final.css') }}">
+</head>
+<body>
+    <div class="receipt">
+        <h1>Thank You!</h1>
+        <h2>Order Receipt</h2>
+        <div class="receipt-item"><strong>Total Items:</strong> <span>{{ total_items }}</span></div>
+        <div class="receipt-item"><strong>Subtotal:</strong> <span>${{ subtotal | round(2) }}</span></div>
+        <div class="receipt-item"><strong>Tax:</strong> <span>${{ tax | round(2) }}</span></div>
+        <div class="receipt-item"><strong>Shipping:</strong> <span>${{ shipping | round(2) }}</span></div>
+        <div class="receipt-item"><strong>Total Price:</strong> <span>${{ total_price | round(2) }}</span></div>
+        <img class="tick-icon" src="{{ url_for('static', filename='images/tick1.webp') }}" alt="Tick Icon">
+    </div>
+</body>
+</html>

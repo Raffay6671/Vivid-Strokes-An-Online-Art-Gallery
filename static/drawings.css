@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Dark background for better visibility of white text */
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+}
+
+.header {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.back-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.navigation {
+    background-color: #444;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.add-to-cart-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: rgba(68, 68, 68, 0.9); /* Semi-transparent background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+}
+
+.gallery-item:hover .add-to-cart-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.price {
+    font-size: 14px;
+    color: #fff; /* Adjust color to fit your design */
+    margin: 5px 0; /* Provides a little space above and below the price */
+    font-weight: bold; /* Makes the price stand out a bit */
+}
+.footer-buttons {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+.footer-buttons button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.footer-buttons button:hover {
+    background-color: #666;
+}

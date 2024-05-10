@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Dark background */
+    color: white; /* Light text color for visibility */
+    font-family: Arial, sans-serif;
+    height: 100%; /* Full height */
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 0; /* No rounded corners */
+    box-shadow: none; /* No box shadows */
+}
+
+h1 {
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%; /* Ensure width is always 100% of the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 270px; /* Max height to ensure uniformity */
+    object-fit: cover; /* Cover the area without distorting aspect ratio */
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.header {
+    background-color: #222; /* Darker background for header */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.back-button, .footer-buttons button {
+    font-size: 18px;
+    padding: 8px 16px;
+    background-color: #d63b02; /* Button background */
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navigation {
+    background-color: #d63b02; /* Slightly lighter background for navigation */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Center navigation links */
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.footer-buttons {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: rgba(68, 68, 68, 0.9); /* Semi-transparent background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+}
+
+.gallery-item:hover .add-to-cart-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.price {
+    font-size: 14px;
+    color: white; /* Adjust color to fit your design */
+    margin: 5px 0; /* Provides a little space above and below the price */
+    font-weight: bold; /* Makes the price stand out a bit */
+}

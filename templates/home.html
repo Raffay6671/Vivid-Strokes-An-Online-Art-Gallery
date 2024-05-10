@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivid Strokes Exhibit</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+  <div class="header">
+    <div class="title">Vivid Strokes Exhibit</div>
+    <div class="auth-links">
+      <a href="{{ url_for('login') }}">Login</a> |
+      <a href="{{ url_for('signup') }}">Signup</a>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <div class="category-links">
+      <a href="{{ url_for('abstract_art') }}">Abstract Art</a>
+      <a href="{{ url_for('paintings') }}">Paintings</a>
+      <a href="{{ url_for('drawings') }}">Drawings</a>
+      <a href="{{ url_for('digital_art') }}">Digital Art</a>
+    </div>
+  </div>
+  
+
+  <div class="main-content">
+    <div class="about-section">
+      <h2 style="text-align: center;">About Us</h2>
+      <p>At Vivid Strokes Exhibit, we bring the gallery to you, showcasing a world of art in one vibrant online destination. From groundbreaking works by established artists to innovative creations by tomorrow's icons, we celebrate the diversity of talent and expression. Explore, discover, and be inspired by the spectrum of art at your fingertips.</p>
+      <br>
+      <p style="text-align: center; margin-top: -20px;">"Explore, discover, and be inspired"</p>
+      <h2 style="text-align: center; margin-top: 40px;">What we Offer</h2>
+      <ul>
+        <li>Diverse Art Collection</li>
+        <li>Online Art Sales</li>
+        <li>Emerging Artist Showcase</li>
+        <li>Virtual Exhibitions</li>
+        <li>Community Engagement</li>
+      </ul>
+      <h2 style="text-align: center;">Contact Us</h2>
+      <p style="text-align: center; font-size: 15px;">
+        <a href="mailto:vividstrokes@gmail.com" style="text-decoration: none; color: black;">
+          <img src="static/images/email.png" alt="Email" style="vertical-align: middle; height: 27px; margin-right: -4px;">
+          vividstrokes@gmail.com
+        </a>
+      </p>
+      <p style="text-align: center; font-size: 15px;">
+        <a href="tel:+923065214821" style="text-decoration: none; color: black;">
+          <img src="static/images/phone-removebg-preview.png" alt="Phone" style="width: 15px; height: auto; vertical-align: middle;">
+          +92 306 5214821
+        </a>
+      </p>
+    </div>
+    <div class="picture-section">
+      <img src="static/images/collage.jpg" alt="Gallery Image" class="about-picture">
+    </div>
+  </div>
+  <div class="bottom-picture">
+    <img src="static/images/picbot.png" alt="Additional Gallery Image">
+  </div>
+</body>
+</html>

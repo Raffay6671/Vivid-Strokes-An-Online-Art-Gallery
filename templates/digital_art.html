@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='digital_art.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="title">Vivid Strokes Exhibit</div>
+        <button class="back-button" onclick="window.location.href='{{ url_for('home_page') }}'">Home Page</button>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('abstract_art') }}">Abstract Art</a>
+        <a href="{{ url_for('paintings') }}">Paintings</a>
+        <a href="{{ url_for('drawings') }}">Drawings</a>
+        <a href="{{ url_for('digital_art') }}">Digital Art</a>
+    </div>
+    <div class="container">
+        <h1>Digital Art</h1>
+        <div class="gallery">
+            <!-- Sample Gallery Item -->
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da1.webp') }}" alt="Japan by Kim Woobin">
+                <div class="caption">Japan by Kim Woobin</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Japan by Kim Woobin', 100)">Add to Cart</button>
+                <div class="price">Price: $100</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da2.webp') }}" alt="Pink by Taylor Swift">
+                <div class="caption">Pink by Taylor Swift</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Pink by Taylor Swift', 120)">Add to Cart</button>
+                <div class="price">Price: $120</div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da3.webp') }}" alt="Future by Elon Musk">
+                <div class="caption">Future by Elon Musk</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Future by Elon Musk', 150)">Add to Cart</button>
+                <div class="price">Price: $150</div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da4.jpg') }}" alt="Panda by Hero Fineness">
+                <div class="caption">Panda by Hero Fineness</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Panda by Hero Fineness', 180)">Add to Cart</button>
+                <div class="price">Price: $180</div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da5.avif') }}" alt="Droplet-Solar by Coldplay">
+                <div class="caption">Droplet-Solar by Coldplay</div>
+                <button class="add-to-cart-btn" onclick="addToCart('Droplet-Solar by Coldplay', 80)">Add to Cart</button>
+                <div class="price">Price: $80</div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='images/da6.webp') }}" alt="AI-Fish by Mark Zucker">
+                <div class="caption">AI-Fish by Mark Zucker</div>
+                <button class="add-to-cart-btn" onclick="addToCart('AI-Fish by Mark Zucker', 160)">Add to Cart</button>
+                <div class="price">Price: $160</div>
+            </div>
+            
+            <!-- Additional items should be added here -->
+        </div>
+    </div>
+    <div class="footer-buttons">
+        <button onclick="location.href='{{ url_for('cart') }}'">Your Cart</button>
+    </div>
+    <script>
+        function addToCart(itemName, itemPrice) {
+            fetch('/add-to-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    item_name: itemName,
+                    item_price: itemPrice
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Item added to cart: ' + itemName);
+            })
+            .catch(error => console.error('Error adding item:', error));
+        }
+    </script>
+</body>
+</html>

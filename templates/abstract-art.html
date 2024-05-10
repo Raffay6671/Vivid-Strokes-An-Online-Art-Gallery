@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Art</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='abstract-art.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="title">Vivid Strokes Exhibit</div>
+        <button class="back-button" onclick="window.location.href='{{ url_for('home_page') }}'">Home Page</button>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('abstract_art') }}">Abstract Art</a>
+        <a href="{{ url_for('paintings') }}">Paintings</a>
+        <a href="{{ url_for('drawings') }}">Drawings</a>
+        <a href="{{ url_for('digital_art') }}">Digital Art</a>
+        
+    </div>
+    <div class="container">
+        <h1>Abstract Art</h1>
+        <div class="gallery">
+            <!-- Gallery items -->
+            <div class="gallery-item">
+                <img src="static/images/a1.jpg" alt="Red Gray World by Louis Mark">
+                <div class="caption">Red Gray World by Louis Mark</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Red Gray World by Louis Mark', 80)">Add to Cart</button>
+
+                <div class="price">Price: $80</div>
+            </div>
+            <div class="gallery-item">
+                <img src="static/images/a2.jpg" alt="Kolor by Annie Marie">
+                <div class="caption">Kolor by Annie Marie</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Kolor by Annie Marie', 50)">Add to Cart</button>
+
+                <div class="price">Price: $50</div>
+            </div>
+            <div class="gallery-item">
+                <img src="static/images/a3.jpeg" alt="Tornado by Shawn Mendes">
+                <div class="caption">Tornado by Shawn Mendes</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Tornado by Shawn Mendes', 100)">Add to Cart</button>
+
+                <div class="price">Price: $100</div>
+            </div>
+            <div class="gallery-item">
+                <img src="static/images/a4.webp" alt="Bright Mirror by James Arthur">
+                <div class="caption">Bright Mirror by James Arthur</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Bright Mirror by James Arthur', 120)">Add to Cart</button>
+
+                <div class="price">Price: $120</div>
+            </div>
+            <div class="gallery-item">
+                <img src="static/images/a5.jpg" alt="Women by Dua Lipa">
+                <div class="caption">Women by Dua Lipa</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Women by Dua Lipa', 135)">Add to Cart</button>
+
+                <div class="price">Price: $135</div>
+            </div>
+            <div class="gallery-item">
+                <img src="static/images/a6.jpg" alt="Flowers by Millie Bobby">
+                <div the="caption">Flowers by Millie Bobby</div>
+                <!-- <button class="add-to-cart-btn">Add to Cart</button> -->
+                <button class="add-to-cart-btn" onclick="addToCart('Flowers by Millie Bobby', 110)">Add to Cart</button>
+
+                <div class="price">Price: $110</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-buttons">
+        <button onclick="location.href='{{ url_for('cart') }}'">Your Cart</button>
+    </div>
+
+    
+<script>
+    function addToCart(itemName, itemPrice) {
+    fetch('/add-to-cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id: 'currentUserId',  // This needs to be dynamically set based on logged-in user session
+            item_name: itemName,
+            item_price: itemPrice
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Item added to cart: ' + itemName);
+    })
+    .catch(error => console.error('Error adding item:', error));
+}
+
+
+</script>
+
+</body>
+</html>
