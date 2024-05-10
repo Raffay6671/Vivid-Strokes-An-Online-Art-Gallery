@@ -23,41 +23,31 @@ git clone https://github.com/yourusername/vivid-strokes-exhibit.git
 
 cd vivid-strokes-exhibit
 
-Set up a virtual environment (Optional but recommended):
+Set up a virtual environment (Optional but recommended): python -m venv venv
 
-bash
-Copy code
-python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-Install required packages:
-bash
-Copy code
-pip install -r requirements.txt
+
+Install required packages: 
+pip install Flask
+pip install Flask-PyMongo
+(Python Must be Installed Obviously)
+
+
 Set up your MongoDB database:
-Ensure MongoDB is installed and running on your machine.
-Create a database named vividstrokes and import the initial data if provided.
+Ensure MongoDB is installed and running on your machine(you can use the command mongod for that).
+
+
 Environment Variables:
 Create a .env file in the root directory.
-Add MONGO_URI, FLASK_APP, and FLASK_ENV configurations.
-Example:
-makefile
-Copy code
-MONGO_URI="mongodb://localhost:27017/vividstrokes"
-FLASK_APP=app.py
-FLASK_ENV=development
-Run the application:
-bash
-Copy code
-flask run
-Usage
-After installation, you can access:
 
+Run the application:
+python app.py
+
+After installation, you can access:
 Home page: http://localhost:5000/
 Admin Dashboard: Navigate to http://localhost:5000/admin/login and use the admin credentials to access.
+
 Contributing
 Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-Please ensure to update tests as appropriate.
 
-License
-MIT
