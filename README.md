@@ -19,9 +19,9 @@ To set up the project locally, follow these steps:
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/yourusername/vivid-strokes-exhibit.git
+git clone https://github.com/yourusername/Vivid-Strokes-An-Online-Art-Gallery.git
 
-cd vivid-strokes-exhibit
+cd Vivid-Strokes-An-Online-Art-Gallery
 
 Set up a virtual environment (Optional but recommended): python -m venv venv
 
