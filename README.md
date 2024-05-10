@@ -12,6 +12,7 @@ Flask: A micro web framework written in Python used for backend development.
 MongoDB: A NoSQL database used to store user and product data.
 HTML/CSS: Used for creating and styling web pages.
 JavaScript: Enhances interactivity on client side.
+
 Installation
 To set up the project locally, follow these steps:
 
@@ -19,8 +20,11 @@ Clone the repository:
 bash
 Copy code
 git clone https://github.com/yourusername/vivid-strokes-exhibit.git
+
 cd vivid-strokes-exhibit
+
 Set up a virtual environment (Optional but recommended):
+
 bash
 Copy code
 python -m venv venv
